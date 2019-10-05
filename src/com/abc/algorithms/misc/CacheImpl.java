@@ -21,7 +21,7 @@ public class CacheImpl {
         System.out.println("Before");
         list.printList();
         list.moveNodeToHead(cache.get(5));
-        System.out.println("\nØAfter");
+        System.out.println("\nAfter");
         list.printList();
     }
 
