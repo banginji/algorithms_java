@@ -1,5 +1,7 @@
 package com.abc.algorithms.sorts;
 
+import java.util.Arrays;
+
 public class QuickSort {
     private static void quickSort(int[] nums, int start, int end) {
         if (start == end) {
@@ -47,17 +49,10 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-        int a = 3, b = 2;
-        Tuple<Integer> result = swap(a, b);
-
-        System.out.println("a: " + result.getOne() + ", b: " + result.getTwo());
-
         int[] nums = {213, 4, 123, 546, 13, 67, 1, -1};
         quickSort(nums, 0, nums.length - 1);
 
-        for (int num : nums) {
-            System.out.println(num);
-        }
+        Arrays.stream(nums).forEach(System.out::println);
     }
 
     private static class Tuple<T> {
