@@ -8,11 +8,11 @@ public class Palindrome {
 
         int lengthOfList = linkedList.lengthOfList();
 
-        int midPoint = lengthOfList % 2 == 0 ? lengthOfList/2 : lengthOfList/2 + 1;
+        int midPoint = lengthOfList % 2 == 0 ? lengthOfList / 2 : lengthOfList / 2 + 1;
 
         LinkedList.Node<Character> itrNode = linkedList.head;
 
-        for (int i = 0; i< midPoint ; i++) {
+        for (int i = 0; i < midPoint; i++) {
             stack.push(itrNode.data);
             itrNode = itrNode.next;
         }

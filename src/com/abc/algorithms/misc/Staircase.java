@@ -103,6 +103,6 @@ public class Staircase {
         System.out.println(numberOfWays(4));
         System.out.println(effNumberOfWays(3));
 
-        System.out.println(effKNumberOfWays(4, new Integer[]{1, 3, 5}));
+        System.out.println(effKNumberOfWays(20, new Integer[]{1, 3, 5}));
     }
 }
