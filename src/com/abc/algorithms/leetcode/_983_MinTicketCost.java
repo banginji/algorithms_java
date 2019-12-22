@@ -1,7 +1,5 @@
 package com.abc.algorithms.leetcode;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.stream.IntStream;
 
 public class _983_MinTicketCost {
