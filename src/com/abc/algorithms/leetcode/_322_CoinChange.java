@@ -29,22 +29,6 @@ public class _322_CoinChange {
         return coinChange(Arrays.copyOf(coins, coins.length - 1), amount, count);
     }
 
-    private static int something(int[] coins, int amount) {
-        if (coins == null || coins.length == 0 || amount <= 0)
-            return 0;
-        int[] dp = new int[amount + 1];
-        for (int amt = 1; amt <= amount; amt++) {
-            dp[amt] = Integer.MAX_VALUE;
-            for (int coin : coins) {
-                if (coin > amt)
-                    continue;
-                int prev = dp[amt - coin];
-                dp[amt] = prev == Integer.MAX_VALUE ? dp[amt] : Math.min(1 + prev, dp[amt]);
-            }
-        }
-        return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
-    }
-
     private static int coinChanges(int[] coins, int amount) {
         int[] amounts = new int[amount + 1];
 
