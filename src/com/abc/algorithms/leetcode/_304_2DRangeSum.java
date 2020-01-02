@@ -15,8 +15,8 @@ public class _304_2DRangeSum {
         }
 
         int sumRegion(
-                Tuple<Integer> leftTopCorner,
-                Tuple<Integer> rightBottomCorner
+                Tuple<Integer, Integer> leftTopCorner,
+                Tuple<Integer, Integer> rightBottomCorner
         ) {
             int sum = 0;
             for (int rowIdx = leftTopCorner.getFirst();

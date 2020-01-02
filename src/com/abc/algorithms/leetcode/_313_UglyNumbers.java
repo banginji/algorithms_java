@@ -9,7 +9,7 @@ public class _313_UglyNumbers {
     private static Integer superUglyNumber(Integer nth, Integer[] primes) {
         List<Integer> superUglyNumbers = new LinkedList<>();
 
-        HashMap<Integer, List<Tuple<Integer>>> tracker = new HashMap<>();
+        HashMap<Integer, List<Tuple<Integer, Integer>>> tracker = new HashMap<>();
         tracker.put(1, new ArrayList<>());
         for (Integer prime: primes) {
             tracker.get(1).add(new Tuple<>(0, prime));
@@ -21,7 +21,7 @@ public class _313_UglyNumbers {
         while (superUglyNumbers.size() < nth) {
             superUglyNumbers.add(heap.heapPop());
 
-            for (Tuple<Integer> tuple: tracker.get(
+            for (Tuple<Integer, Integer> tuple: tracker.get(
                     superUglyNumbers.get(
                             superUglyNumbers.size()-1
                     )
