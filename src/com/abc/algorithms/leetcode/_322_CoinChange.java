@@ -53,6 +53,6 @@ public class _322_CoinChange {
     }
 
     public static void main(String[] args) {
-        System.out.println(coinChanges(new int[]{1, 2, 5}, 6));
+        System.out.println(coinChanges(new int[]{1, 5, 10, 25}, 10));
     }
 }

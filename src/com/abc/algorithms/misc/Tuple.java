@@ -1,10 +1,10 @@
 package com.abc.algorithms.misc;
 
-public class Tuple<T> {
+public class Tuple<T, U> {
     private final T first;
-    private final T second;
+    private final U second;
 
-    public Tuple(T first, T second) {
+    public Tuple(T first, U second) {
         this.first = first;
         this.second = second;
     }
@@ -13,7 +13,7 @@ public class Tuple<T> {
         return this.first;
     }
 
-    public T getSecond() {
+    public U getSecond() {
         return second;
     }
 

@@ -40,7 +40,7 @@ public class HeapSort {
         }
 
         if (largestIdx != idx) {
-            Tuple<Integer> swappedNums = swap(nums[largestIdx], nums[idx]);
+            Tuple<Integer, Integer> swappedNums = swap(nums[largestIdx], nums[idx]);
             nums[largestIdx] = swappedNums.getFirst();
             nums[idx] = swappedNums.getSecond();
             maxHeapify(nums, largestIdx, end);
@@ -58,7 +58,7 @@ public class HeapSort {
     private static void heapSort(int[] nums) {
         buildMaxHeap(nums);
         for (int idx = nums.length - 1; idx >= 0; idx--) {
-            Tuple<Integer> swappedNums = swap(nums[idx], nums[0]);
+            Tuple<Integer, Integer> swappedNums = swap(nums[idx], nums[0]);
             nums[idx] = swappedNums.getFirst();
             nums[0] = swappedNums.getSecond();
 
@@ -66,7 +66,7 @@ public class HeapSort {
         }
     }
 
-    private static Tuple<Integer> swap(int a, int b) {
+    private static Tuple<Integer, Integer> swap(int a, int b) {
         a = a + b;
         b = a - b;
         a = a - b;

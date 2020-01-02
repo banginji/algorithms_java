@@ -42,7 +42,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
                     return search(node.leftChild, data);
             } else
                 return null;
-        } else {
+        } else if (node.data.compareTo(data) < 0) {
             if (node.rightChild != null) {
                 if (node.rightChild.data.compareTo(data) == 0)
                     return node.rightChild;
@@ -50,7 +50,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
                     return search(node.rightChild, data);
             } else
                 return null;
-        }
+        } else if (node.data.compareTo(data) == 0)
+            return node;
+
+        return null;
     }
 
     public Node<T> getRoot() {

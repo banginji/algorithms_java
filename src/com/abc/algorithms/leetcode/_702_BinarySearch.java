@@ -4,7 +4,7 @@ import com.abc.algorithms.misc.Tuple;
 
 public class _702_BinarySearch {
     private static int search(int[] nums, int target) {
-        Tuple<Integer> range = getRange(nums, 0, 2, target);
+        Tuple<Integer, Integer> range = getRange(nums, 0, 2, target);
 
         return binarySearch(nums, range.getFirst(), range.getSecond(), target);
     }
@@ -26,7 +26,7 @@ public class _702_BinarySearch {
             return binarySearch(nums, midPoint, endIdx, target);
     }
 
-    private static Tuple<Integer> getRange(int[] nums, int startIdx, int endIdx, int target) {
+    private static Tuple<Integer, Integer> getRange(int[] nums, int startIdx, int endIdx, int target) {
         try {
             if (nums[endIdx] < target)
                 return getRange(nums, endIdx, 2 * endIdx, target);
