@@ -8,16 +8,16 @@ public class _1143_LongestCommonSubsequence {
         return lcsSlow(longer, 0, shorter, 0, 0);
     }
 
-    private static int lcsSlow(String str1, int str1Idx, String str2, int str2Idx, int count) {
-        if (str1Idx == str1.length() || str2Idx == str2.length())
+    private static int lcsSlow(String longer, int longerIdx, String shorter, int shorterIdx, int count) {
+        if (longerIdx == longer.length() || shorterIdx == shorter.length())
             return count;
 
-        if (str1.charAt(str1Idx) == str2.charAt(str2Idx))
-            return lcsSlow(str1, ++str1Idx, str2, ++str2Idx, ++count);
+        if (longer.charAt(longerIdx) == shorter.charAt(shorterIdx))
+            return lcsSlow(longer, longerIdx + 1, shorter, shorterIdx + 1, count + 1);
 
         return Math.max(
-                lcsSlow(str1, ++str1Idx, str2, str2Idx, count),
-                lcsSlow(str1, str1Idx, str2, ++str2Idx, count)
+                lcsSlow(longer, longerIdx + 1, shorter, shorterIdx, count),
+                lcsSlow(longer, longerIdx, shorter, shorterIdx + 1, count)
         );
     }
 
