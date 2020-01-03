@@ -13,10 +13,16 @@ public class _718_LargestSubArray {
             return count;
         if (longer[longerIdx] == shorter[shorterIdx])
             return largestSubArraySlow(longer, longerIdx + 1, shorter, shorterIdx + 1, count + 1);
-        return Math.max(
-                largestSubArraySlow(longer, longerIdx + 1, shorter, shorterIdx, 0),
+        int resultA = Math.max(
+                count,
+                largestSubArraySlow(longer, longerIdx + 1, shorter, shorterIdx, 0)
+        );
+        int resultB = Math.max(
+                count,
                 largestSubArraySlow(longer, longerIdx, shorter, shorterIdx + 1, 0)
         );
+
+        return Math.max(resultA, resultB);
     }
 
     private static int largestSubArray(int[] A, int[] B) {
@@ -34,6 +40,6 @@ public class _718_LargestSubArray {
     }
 
     public static void main(String[] args) {
-        System.out.println(largestSubArraySlow(new int[]{0, 1, 0, 1, 1}, new int[]{1, 0, 1, 0, 1}));
+        System.out.println(largestSubArraySlow(new int[]{0, 1, 1, 1, 1}, new int[]{1, 0, 1, 0, 1}));
     }
 }
