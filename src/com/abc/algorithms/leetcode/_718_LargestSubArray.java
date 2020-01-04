@@ -1,7 +1,5 @@
 package com.abc.algorithms.leetcode;
 
-import java.util.Arrays;
-
 public class _718_LargestSubArray {
     private static int largestSubArraySlow(int[] A, int[] B) {
         int[] longerArray = A.length >= B.length ? A : B;
