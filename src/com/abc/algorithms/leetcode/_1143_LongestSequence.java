@@ -48,7 +48,35 @@ public class _1143_LongestSequence {
         return resultA.length() > resultB.length() ? resultA : resultB;
     }
 
+    /**
+     *     b a b a b
+     *     0 0 0 0 0
+     * a 0 0 1 1 1 1
+     * b 0 1 1 2 2 2
+     * b 0 1 1 2 2 3
+     * b 0 1 1 2 2 3
+     * b 0 1 1 2 2 3
+     */
+
+    private static int lcsFastMyWay(String str1, String str2) {
+        char[] char1Array = str1.toCharArray();
+        char[] char2Array = str2.toCharArray();
+
+        int[][] result = new int[char1Array.length + 1][char2Array.length + 1];
+
+        for (int char1Idx = 1; char1Idx <= char1Array.length; char1Idx++) {
+            for (int char2Idx = 1; char2Idx <= char2Array.length; char2Idx++) {
+                if (char1Array[char1Idx - 1] == char2Array[char2Idx - 1])
+                    result[char1Idx][char2Idx] = result[char1Idx - 1][char2Idx - 1] + 1;
+                else
+                    result[char1Idx][char2Idx] = result[char1Idx][char2Idx - 1];
+            }
+        }
+
+        return result[char1Array.length][char2Array.length];
+    }
+
     public static void main(String[] args) {
-        System.out.println(lcsFast("abbbb", "babab"));
+        System.out.println(lcsFastMyWay("abbbba", "babab"));
     }
 }
