@@ -18,35 +18,16 @@ public class KnapSack {
         );
     }
 
-    // TODO Check how to correct the logic
-    private static int maxValueWithinWeight(int[] values, int[] weights, int weightUpperLimit) {
-        int[] result = new int[weightUpperLimit + 1];
-
-        for (int weight = 1; weight <= weightUpperLimit; weight++) {
-            for (int weightIdx = 0; weightIdx < weights.length; weightIdx++) {
-                if (weight < weights[weightIdx]) {
-                    result[weight] = result[weight - 1];
-                } else {
-                    result[weight] = Math.max(
-                            result[weight],
-                            result[weight - weights[weightIdx]] + values[weightIdx]
-                    );
-                }
-            }
-        }
-
-        return result[weightUpperLimit];
-    }
-
-    // TODO check how to correct the logic
-    private static int alt(int[] values, int[] weights, int capacity) {
+    private static int knapSackFast(int[] values, int[] weights, int capacity) {
         int[] result = new int[capacity + 1];
 
         for (int weightIdx = 0; weightIdx < weights.length; weightIdx++) {
-            for (int weight = weights[weightIdx]; weight <= capacity; weight++) {
+            for (int weight = capacity; weight >= 1; weight--) {
+                if (weight < weights[weightIdx])
+                    continue;
                 result[weight] = Math.max(
-                        result[weightIdx],
-                        result[weight - weights[weightIdx]] + values[weightIdx]
+                        result[weight],
+                        values[weightIdx] + result[weight - weights[weightIdx]]
                 );
             }
         }
@@ -57,10 +38,19 @@ public class KnapSack {
     public static void main(String[] args) {
         // 309
         System.out.println(
-                knapSackSlow(
+                knapSackFast(
                         new int[]{92, 57, 49, 68, 60, 43, 67, 84, 87, 72},
                         new int[]{23, 31, 29, 44, 53, 38, 63, 85, 89, 82},
                         165
+                )
+        );
+
+        // 51
+        System.out.println(
+                knapSackFast(
+                        new int[]{24, 13, 23, 15, 16},
+                        new int[]{12, 7, 11, 8, 9},
+                        26
                 )
         );
     }

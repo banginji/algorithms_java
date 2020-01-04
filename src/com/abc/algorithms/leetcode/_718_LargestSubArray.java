@@ -25,6 +25,33 @@ public class _718_LargestSubArray {
         return Math.max(resultA, resultB);
     }
 
+    private static int largestSubArrayFast(int[] A, int[] B) {
+        int[] longer = A.length >= B.length ? A : B;
+        int[] shorter = A.length < B.length ? A : B;
+
+        Integer[][] memo = new Integer[longer.length][shorter.length];
+
+        return largestSubArrayFast(longer, 0, shorter, 0, memo);
+    }
+
+    private static int largestSubArrayFast(int[] longer, int longerIdx, int[] shorter, int shorterIdx, Integer[][] memo) {
+        if (longerIdx == longer.length || shorterIdx == shorter.length)
+            return 0;
+
+        if (memo[longerIdx][shorterIdx] != null)
+            return memo[longerIdx][shorterIdx];
+
+        if (longer[longerIdx] == shorter[shorterIdx]) {
+            memo[longerIdx][shorterIdx] = 1 + largestSubArrayFast(longer, longerIdx + 1, shorter, shorterIdx + 1, memo);
+            return memo[longerIdx][shorterIdx];
+        }
+
+        return Math.max(
+                largestSubArrayFast(longer, longerIdx + 1, shorter, shorterIdx, memo),
+                largestSubArrayFast(longer, longerIdx, shorter, shorterIdx + 1, memo)
+        );
+    }
+
     private static int largestSubArray(int[] A, int[] B) {
         int result = 0;
         int[][] resultMatrix = new int[A.length + 1][B.length + 1];
@@ -40,6 +67,11 @@ public class _718_LargestSubArray {
     }
 
     public static void main(String[] args) {
-        System.out.println(largestSubArraySlow(new int[]{0, 1, 1, 1, 1}, new int[]{1, 0, 1, 0, 1}));
+        System.out.println(
+                largestSubArrayFast(
+                        new int[]{0, 1, 1, 1, 1},
+                        new int[]{1, 0, 1, 0, 1}
+                )
+        );
     }
 }
