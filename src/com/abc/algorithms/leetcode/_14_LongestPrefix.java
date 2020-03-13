@@ -24,7 +24,7 @@ public class _14_LongestPrefix {
     private static boolean allCharsAtIdxMatch(String[] strs, int idx) {
         return Arrays.stream(strs)
                 .map(str -> str.charAt(idx))
-                .allMatch(str -> str == strs[0].charAt(idx));
+                .allMatch(character -> character == strs[0].charAt(idx));
     }
 
     public static void main(String[] args) {

@@ -11,19 +11,19 @@ public class _313_UglyNumbers {
 
         HashMap<Integer, List<Tuple<Integer, Integer>>> tracker = new HashMap<>();
         tracker.put(1, new ArrayList<>());
-        for (Integer prime: primes) {
+        for (Integer prime : primes) {
             tracker.get(1).add(new Tuple<>(0, prime));
         }
 
         BinaryHeap.MinHeap<Integer> heap = new BinaryHeap.MinHeap<>();
         heap.heapPush(1);
 
-        while (superUglyNumbers.size() < nth) {
+        while (superUglyNumbers.size() <= nth) {
             superUglyNumbers.add(heap.heapPop());
 
-            for (Tuple<Integer, Integer> tuple: tracker.get(
+            for (Tuple<Integer, Integer> tuple : tracker.get(
                     superUglyNumbers.get(
-                            superUglyNumbers.size()-1
+                            superUglyNumbers.size() - 1
                     )
             )) {
                 Integer newUgly = superUglyNumbers.get(tuple.getFirst()) * tuple.getSecond();
@@ -31,7 +31,7 @@ public class _313_UglyNumbers {
                 if (tracker.containsKey(newUgly)) {
                     tracker.get(newUgly).add(
                             new Tuple<>(
-                                    tuple.getFirst()+1,
+                                    tuple.getFirst() + 1,
                                     tuple.getSecond()
                             )
                     );
@@ -41,7 +41,7 @@ public class _313_UglyNumbers {
                             new LinkedList<>(
                                     Arrays.asList(
                                             new Tuple<>(
-                                                    tuple.getFirst()+1,
+                                                    tuple.getFirst() + 1,
                                                     tuple.getSecond()
                                             )
                                     )
@@ -52,12 +52,12 @@ public class _313_UglyNumbers {
             }
             tracker.remove(
                     superUglyNumbers.get(
-                            superUglyNumbers.size()-1
+                            superUglyNumbers.size() - 1
                     )
             );
         }
 
-        return superUglyNumbers.get(nth);
+        return superUglyNumbers.get(nth - 1);
     }
 
     public static void main(String[] args) {
