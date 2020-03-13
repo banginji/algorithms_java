@@ -18,7 +18,7 @@ public class BinaryHeap {
 
         private void buildMinHeap() {
             for (int idx = heap.size() / 2; idx >= 0; idx--)
-                minHeapify(idx, heap.size());
+                minHeapify(idx, heap.size() - 1);
         }
 
         private void minHeapify(int idx, int endIdx) {
@@ -73,9 +73,9 @@ public class BinaryHeap {
 
         public void heapSort() {
             buildMinHeap();
-            for (int idx = this.heap.size() - 1; idx >= 0; idx--) {
+            for (int idx = this.heap.size() - 1; idx > 0; idx--) {
                 Collections.swap(this.heap, idx, 0);
-                minHeapify(0, idx);
+                minHeapify(0, idx - 1);
             }
         }
 
@@ -97,7 +97,7 @@ public class BinaryHeap {
 
         private void buildMaxHeap() {
             for (int idx = heap.size() / 2; idx >= 0; idx--)
-                maxHeapify(idx, heap.size());
+                maxHeapify(idx, heap.size() - 1);
         }
 
         private void maxHeapify(int idx, int endIdx) {
@@ -152,9 +152,9 @@ public class BinaryHeap {
 
         public void heapSort() {
             buildMaxHeap();
-            for (int idx = this.heap.size() - 1; idx >= 0; idx--) {
+            for (int idx = this.heap.size() - 1; idx > 0; idx--) {
                 Collections.swap(this.heap, idx, 0);
-                maxHeapify(0, idx);
+                maxHeapify(0, idx - 1);
             }
         }
 
