@@ -25,6 +25,7 @@ public class _718_LargestSubArray {
         return Math.max(resultA, resultB);
     }
 
+    // TODO - check logic
     private static int largestSubArrayFast(int[] A, int[] B) {
         int[] longer = A.length >= B.length ? A : B;
         int[] shorter = A.length < B.length ? A : B;
@@ -68,7 +69,7 @@ public class _718_LargestSubArray {
 
     public static void main(String[] args) {
         System.out.println(
-                largestSubArrayFast(
+                largestSubArraySlow(
                         new int[]{0, 1, 1, 1, 1},
                         new int[]{1, 0, 1, 0, 1}
                 )

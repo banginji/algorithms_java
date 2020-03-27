@@ -9,11 +9,11 @@ public class _705_HashSet {
         int lastElemIdx = -1;
 
         public void add(int key) {
-            if (this.data.length - 1 == lastElemIdx)
-                this.data = Arrays.copyOf(this.data, lastElemIdx + 2);
             for (int elem : this.data)
                 if (elem == key)
                     return;
+            if (this.data.length - 1 == lastElemIdx)
+                this.data = Arrays.copyOf(this.data, lastElemIdx + 2);
             this.data[++lastElemIdx] = key;
         }
 
@@ -27,7 +27,7 @@ public class _705_HashSet {
 
             for (int idx = itrIdx; idx < lastElemIdx; idx++)
                 this.data[idx] = this.data[idx + 1];
-            this.data = Arrays.copyOf(this.data, --lastElemIdx);
+            this.data = Arrays.copyOf(this.data, lastElemIdx);
         }
 
         public boolean contains(int key) {
@@ -45,6 +45,8 @@ public class _705_HashSet {
     public static void main(String[] args) {
         MyHashSet myHashSet = new MyHashSet();
         IntStream.range(1, 10).boxed().forEach(myHashSet::add);
+
+        myHashSet.add(71);
 
         System.out.println(Arrays.toString(myHashSet.getData()));
 
