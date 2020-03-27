@@ -8,6 +8,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class _4_7_BuildOrder {
+    // TODO - does not work for some cases
     private static void buildOrder(List<Character> projects, List<Tuple<Character, Character>> deps) {
         Map<Character, Graph.Node<Character>> nodes = createNodes(projects);
 
