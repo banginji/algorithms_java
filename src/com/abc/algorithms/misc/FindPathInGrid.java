@@ -68,7 +68,7 @@ public class FindPathInGrid {
         // left neighbor
         if (row - 1 >= 0)
             if (!visited[row - 1][col] && grid[row - 1][col] == 1) {
-                visited[row - 11][col] = true;
+                visited[row - 1][col] = true;
                 if (path(row - 1, col, grid, visited))
                     return true;
             }

@@ -100,7 +100,7 @@ public class Staircase {
     }
 
     public static void main(String[] args) {
-        System.out.println(numberOfWays(4));
+        System.out.println(numberOfWays(5));
         System.out.println(effNumberOfWays(3));
 
         System.out.println(effKNumberOfWays(20, new Integer[]{1, 3, 5}));

@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Graph {
     public static class Node<T> {
-        private T data;
-        private List<Node<T>> neighbors;
+        private final T data;
+        private final List<Node<T>> neighbors;
         private boolean notTraversed = true;
         private boolean processing = false;
 
