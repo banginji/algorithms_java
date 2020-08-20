@@ -5,52 +5,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class _8_2_RobotInGrid {
-    private static class Point {
-        private final int rowIdx;
-        private final int colIdx;
-        private final Point parentPoint;
-
-        Point(int rowIdx, int colIdx, Point parentPoint) {
-            this.rowIdx = rowIdx;
-            this.colIdx = colIdx;
-            this.parentPoint = parentPoint;
-        }
-
-        public int getRowIdx() {
-            return rowIdx;
-        }
-
-        public int getColIdx() {
-            return colIdx;
-        }
-
-        public Point getParentPoint() {
-            return parentPoint;
-        }
-
-        @Override
-        public String toString() {
-            return "Point{" +
-                    "rowIdx=" + rowIdx +
-                    ", colIdx=" + colIdx +
-                    ", parentPoint=" + parentPoint +
-                    '}';
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Point point = (Point) o;
-            return rowIdx == point.rowIdx &&
-                    colIdx == point.colIdx;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(rowIdx, colIdx, parentPoint);
-        }
-    }
+    record Point(int rowIdx, int colIdx, Point parentPoint) {}
 
     private static boolean[][] randomGrid(int row, int column) {
         boolean[][] grid = new boolean[row][column];
@@ -111,7 +66,7 @@ public class _8_2_RobotInGrid {
                 )
         );
 
-        Predicate<Point> isAccessiblePoint = (point) -> grid[point.getRowIdx()][point.getColIdx()];
+        Predicate<Point> isAccessiblePoint = (point) -> grid[point.rowIdx()][point.colIdx()];
 
         Predicate<Point> isVisitedPoint = (point) -> !visitedPoints.contains(point);
 
@@ -125,7 +80,7 @@ public class _8_2_RobotInGrid {
                     .collect(Collectors.toList());
 
             for (Point neighbor : neighbors)
-                if (neighbor.getRowIdx() == 0 && neighbor.getColIdx() == 0)
+                if (neighbor.rowIdx() == 0 && neighbor.colIdx() == 0)
                     return neighbor;
 
             if (neighbors.size() > 0) {
@@ -138,20 +93,20 @@ public class _8_2_RobotInGrid {
     private static List<Point> getNeighbors(Point point) {
         List<Point> neighbors = new ArrayList<>();
 
-        if (point.getRowIdx() - 1 >= 0)
+        if (point.rowIdx() - 1 >= 0)
             neighbors.add(
                     new Point(
-                            point.getRowIdx() - 1,
-                            point.getColIdx(),
+                            point.rowIdx() - 1,
+                            point.colIdx(),
                             point
                     )
             );
 
-        if (point.getColIdx() - 1 >= 0)
+        if (point.colIdx() - 1 >= 0)
             neighbors.add(
                     new Point(
-                            point.getRowIdx(),
-                            point.getColIdx() - 1,
+                            point.rowIdx(),
+                            point.colIdx() - 1,
                             point
                     )
             );

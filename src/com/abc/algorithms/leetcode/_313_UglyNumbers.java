@@ -26,13 +26,13 @@ public class _313_UglyNumbers {
                             superUglyNumbers.size() - 1
                     )
             )) {
-                Integer newUgly = superUglyNumbers.get(tuple.getFirst()) * tuple.getSecond();
+                Integer newUgly = superUglyNumbers.get(tuple.first()) * tuple.second();
 
                 if (tracker.containsKey(newUgly)) {
                     tracker.get(newUgly).add(
                             new Tuple<>(
-                                    tuple.getFirst() + 1,
-                                    tuple.getSecond()
+                                    tuple.first() + 1,
+                                    tuple.second()
                             )
                     );
                 } else {
@@ -41,8 +41,8 @@ public class _313_UglyNumbers {
                             new LinkedList<>(
                                     Arrays.asList(
                                             new Tuple<>(
-                                                    tuple.getFirst() + 1,
-                                                    tuple.getSecond()
+                                                    tuple.first() + 1,
+                                                    tuple.second()
                                             )
                                     )
                             )

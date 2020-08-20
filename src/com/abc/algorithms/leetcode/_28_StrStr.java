@@ -9,10 +9,10 @@ public class _28_StrStr {
         while (hIdx < haystack.length()) {
             if (haystack.charAt(hIdx) == needle.charAt(nIdx)) {
                 Tuple<Integer, Boolean> allMatch = allMatch(haystack, hIdx, needle);
-                if (allMatch.getSecond())
+                if (allMatch.second())
                     return hIdx;
                 else
-                    hIdx = allMatch.getFirst();
+                    hIdx = allMatch.first();
             } else
                 hIdx++;
         }

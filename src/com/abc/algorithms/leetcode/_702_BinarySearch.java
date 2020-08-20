@@ -6,7 +6,7 @@ public class _702_BinarySearch {
     private static int search(int[] nums, int target) {
         Tuple<Integer, Integer> range = getRange(nums, 0, 2, target);
 
-        return binarySearch(nums, range.getFirst(), range.getSecond(), target);
+        return binarySearch(nums, range.first(), range.second(), target);
     }
 
     private static int binarySearch(int[] nums, int startIdx, int endIdx, int target) {

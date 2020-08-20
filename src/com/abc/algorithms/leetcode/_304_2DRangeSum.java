@@ -19,12 +19,12 @@ public class _304_2DRangeSum {
                 Tuple<Integer, Integer> rightBottomCorner
         ) {
             int sum = 0;
-            for (int rowIdx = leftTopCorner.getFirst();
-                 rowIdx <= rightBottomCorner.getFirst();
+            for (int rowIdx = leftTopCorner.first();
+                 rowIdx <= rightBottomCorner.first();
                  rowIdx++
             ) {
-                for (int colIdx = leftTopCorner.getSecond();
-                     colIdx <= rightBottomCorner.getSecond();
+                for (int colIdx = leftTopCorner.second();
+                     colIdx <= rightBottomCorner.second();
                      colIdx++
                 ) {
                     sum += this.matrix[rowIdx][colIdx];
