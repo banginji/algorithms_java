@@ -3,7 +3,7 @@ package com.abc.algorithms.misc;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Amzn {
+public class Nmaz {
     private static List<String> subStrs(String inputString, int num) {
         if (inputString.length() == 0)
             return Collections.emptyList();

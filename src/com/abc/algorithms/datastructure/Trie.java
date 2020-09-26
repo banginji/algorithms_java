@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public record Trie(TrieNode root) {
-    public static record TrieNode(Character c, Map<Character, TrieNode> children) {
+    public static record TrieNode(Character charValue, Map<Character, TrieNode> children) {
         public TrieNode(Character c) {
             this(c, new HashMap<>());
         }
@@ -13,7 +13,7 @@ public record Trie(TrieNode root) {
     public void insertWord(String word) {
         TrieNode startNode = root.children().getOrDefault(word.charAt(0), root);
 
-        int currentIdx = startNode.c == '*' ? 0 : 1;
+        int currentIdx = startNode.charValue() == '*' ? 0 : 1;
 
         while (currentIdx < word.length()) {
             Character currentChar = word.charAt(currentIdx);

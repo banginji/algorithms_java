@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.IntStream;
 
-public class Msft {
+public class Tsmf {
     private static int sumEq(int[] A, int[] B) {
         int leftASum = 0, leftBSum = 0, rightASum = IntStream.of(A).sum(), rightBSum = IntStream.of(B).sum();
 
