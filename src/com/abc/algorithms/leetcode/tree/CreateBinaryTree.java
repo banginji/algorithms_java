@@ -6,7 +6,7 @@ public class CreateBinaryTree {
         public TreeNode left;
         public TreeNode right;
 
-        TreeNode(Integer val) {
+        public TreeNode(Integer val) {
             this.val = val;
             this.left = null;
             this.right = null;
