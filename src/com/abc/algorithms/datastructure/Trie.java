@@ -11,7 +11,7 @@ public record Trie(TrieNode root) {
     }
 
     public void insertWord(String word) {
-        TrieNode startNode = root.children().getOrDefault(word.charAt(0), root);
+        TrieNode startNode = this.root().children().getOrDefault(word.charAt(0), this.root());
 
         int currentIdx = startNode.charValue() == '*' ? 0 : 1;
 
