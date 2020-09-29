@@ -60,7 +60,7 @@ public class _407_TrappingRainII {
                                 new int[]{3, 2, 1, 3, 2, 4},
                                 new int[]{2, 3, 3, 2, 3, 1},
                         }
-                )
+                ) == 4
         );
     }
 }
