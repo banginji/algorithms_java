@@ -8,13 +8,14 @@ public class _1462_CourseScheduleIV {
 
         /**
          *
-         * inDegree does NOT contain all courses in purpose for this problem
+         * inDegree does NOT contain all courses on purpose for this problem
          *
          *         for (int course = 0; course < n; course++)
          *             inDegree.put(course, 0);
          *
          * If it is present then it will either appear in front of dependent
          * courses or after which will lead to inconclusive results
+         *
          */
         for (int[] preReq : preReqs) {
             inDegree.putIfAbsent(preReq[0], 0);
