@@ -1,4 +1,4 @@
-package com.abc.algorithms.leetcode.dp;
+package com.abc.algorithms.leetcode.hashtable;
 
 import java.util.HashSet;
 import java.util.Set;
