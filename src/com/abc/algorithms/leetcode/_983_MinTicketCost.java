@@ -5,11 +5,11 @@ import java.util.stream.IntStream;
 public class _983_MinTicketCost {
     private static int minTicketCost(int[] days, int[] costs) {
         //min(dp(i-1)+cost[0]+...)
-        int releventDayLimit = days[days.length - 1];
-        int[] dayCosts = new int[releventDayLimit + 1];
+        int relevantDayLimit = days[days.length - 1];
+        int[] dayCosts = new int[relevantDayLimit + 1];
         int day = 1;
 
-        while (day < releventDayLimit + 1) {
+        while (day < relevantDayLimit + 1) {
             final int itrDay = day;
             if (IntStream.of(days).anyMatch(num -> num == itrDay)) {
                 dayCosts[day] = Math.min(
@@ -25,7 +25,7 @@ public class _983_MinTicketCost {
             }
             day++;
         }
-        return dayCosts[releventDayLimit];
+        return dayCosts[relevantDayLimit];
     }
 
     public static void main(String[] args) {
