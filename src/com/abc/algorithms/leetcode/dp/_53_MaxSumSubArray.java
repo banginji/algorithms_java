@@ -1,4 +1,4 @@
-package com.abc.algorithms.leetcode.hashtable;
+package com.abc.algorithms.leetcode.dp;
 
 public class _53_MaxSumSubArray {
     /**

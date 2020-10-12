@@ -1,4 +1,4 @@
-package com.abc.algorithms.leetcode.hashtable;
+package com.abc.algorithms.leetcode.dp;
 
 public class _152_LargestPrdArray {
     private static int largestPrdArray(int[] nums) {
