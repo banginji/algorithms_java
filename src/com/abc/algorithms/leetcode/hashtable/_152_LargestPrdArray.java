@@ -17,6 +17,7 @@ public class _152_LargestPrdArray {
         return largestPrd;
     }
 
+    // Brute Force
     private static int largestPrdQuadComp(int[] nums) {
         int maxPrd = Integer.MIN_VALUE;
         for (int iIdx = 0; iIdx < nums.length; iIdx++) {

@@ -1,6 +1,10 @@
 package com.abc.algorithms.leetcode.hashtable;
 
 public class _53_MaxSumSubArray {
+    /**
+     * Kadane's algorithm
+     * https://leetcode.com/problems/maximum-subarray/discuss/875312/Java-Solution-Kadane's-Algorithm-with-Detailed-Explanation
+     */
     private static int maxSum(int[] nums) {
         int maxSum = nums[0], currentMaxSum = nums[0];
 
@@ -12,6 +16,7 @@ public class _53_MaxSumSubArray {
         return maxSum;
     }
 
+    // Brute Force
     private static int maxSumQuadComp(int[] nums) {
         int maxSum = Integer.MIN_VALUE;
 
