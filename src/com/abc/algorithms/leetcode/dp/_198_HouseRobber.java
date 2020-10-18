@@ -1,7 +1,10 @@
 package com.abc.algorithms.leetcode.dp;
 
+import com.abc.algorithms.leetcode.TimeIt;
+
 import java.util.Arrays;
 
+// DP Template
 public class _198_HouseRobber {
     private static int houseRobberSlow(int[] nums) {
         return robHouseSlow(nums, 0);
@@ -87,5 +90,41 @@ public class _198_HouseRobber {
                         new int[]{2, 7, 9, 3, 1}
                 ) == 12
         );
+
+        int itr = 0;
+        System.out.println("TimeIt houseRobberSlow");
+        /**
+         * Time taken: 36.601678411
+         * Time taken: 37.179172549
+         * Time taken: 35.679414024
+         *
+         * Time taken ~36 s
+         */
+        while (itr++ < 2)
+            TimeIt.timeTaken(() -> houseRobberSlow(new int[]{114, 117, 207, 117, 235, 82, 90, 67, 143, 146, 53, 108, 200, 91, 80, 223, 58, 170, 110, 236, 81, 90, 222, 160, 165, 195, 187, 199, 114, 235, 197, 187, 69, 129, 64, 214, 228, 78, 188, 67, 205, 94, 205, 169, 241, 202, 144, 240}));
+
+        itr = 0;
+        System.out.println("TimeIt houseRobberDpTd");
+        /**
+         * Time taken: 40.558891072
+         * Time taken: 40.100649711
+         * Time taken: 41.278013967
+         *
+         * Time taken ~40 s
+         */
+        while (itr++ < 2)
+            TimeIt.timeTaken(() -> houseRobberDpTd(new int[]{114, 117, 207, 117, 235, 82, 90, 67, 143, 146, 53, 108, 200, 91, 80, 223, 58, 170, 110, 236, 81, 90, 222, 160, 165, 195, 187, 199, 114, 235, 197, 187, 69, 129, 64, 214, 228, 78, 188, 67, 205, 94, 205, 169, 241, 202, 144, 240}));
+
+        itr = 0;
+        System.out.println("TimeIt houseRobberDpBu");
+        /**
+         * Time taken: 5.847E-6
+         * Time taken: 6.468E-6
+         * Time taken: 3.623E-6
+         *
+         * Time taken ~10e6 s
+         */
+        while (itr++ < 2)
+            TimeIt.timeTaken(() -> houseRobberDpBu(new int[]{114, 117, 207, 117, 235, 82, 90, 67, 143, 146, 53, 108, 200, 91, 80, 223, 58, 170, 110, 236, 81, 90, 222, 160, 165, 195, 187, 199, 114, 235, 197, 187, 69, 129, 64, 214, 228, 78, 188, 67, 205, 94, 205, 169, 241, 202, 144, 240}));
     }
 }
