@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class _407_TrappingRainII {
+    // Does this work?
     private static int trappingRain(int[][] heightMap) {
         int result = 0;
         int rowLength = heightMap.length, colLength = heightMap[0].length;
