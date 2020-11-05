@@ -35,7 +35,7 @@ public class _1333_SortRestaurants {
     }
 
     public static void main(String[] args) {
-        int[][] restautants = new int[][]{
+        int[][] restaurants = new int[][]{
                 new int[]{1, 4, 1, 40, 10},
                 new int[]{2, 8, 0, 50, 5},
                 new int[]{3, 8, 1, 30, 4},
@@ -45,7 +45,7 @@ public class _1333_SortRestaurants {
 
         System.out.println(
                 sortRestaurants(
-                        restautants,
+                        restaurants,
                         1,
                         50,
                         10
@@ -54,7 +54,7 @@ public class _1333_SortRestaurants {
 
         System.out.println(
                 sortRestaurants(
-                        restautants,
+                        restaurants,
                         0,
                         50,
                         10
@@ -63,7 +63,7 @@ public class _1333_SortRestaurants {
 
         System.out.println(
                 sortRestaurants(
-                        restautants,
+                        restaurants,
                         0,
                         30,
                         3
@@ -72,7 +72,7 @@ public class _1333_SortRestaurants {
 
         System.out.println(
                 sortRestaurantsByStream(
-                        restautants,
+                        restaurants,
                         1,
                         50,
                         10
@@ -81,7 +81,7 @@ public class _1333_SortRestaurants {
 
         System.out.println(
                 sortRestaurantsByStream(
-                        restautants,
+                        restaurants,
                         0,
                         50,
                         10
@@ -90,7 +90,7 @@ public class _1333_SortRestaurants {
 
         System.out.println(
                 sortRestaurantsByStream(
-                        restautants,
+                        restaurants,
                         0,
                         30,
                         3
