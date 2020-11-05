@@ -57,7 +57,7 @@ public class _1262_MaxSumDivThree {
             case 1, 2 -> {
                 int one = 0;
                 if (pqs.get(mod).size() > 0)
-                    one = sum - pqs.get(mod).peek();
+                    one = sum - pqs.get(mod).poll();
                 int two = 0;
                 if (pqs.get(3 - mod).size() > 1)
                     two = sum - pqs.get(3 - mod).poll() - pqs.get(3 - mod).poll();
@@ -67,6 +67,22 @@ public class _1262_MaxSumDivThree {
         };
     }
 
+    /**
+     * Demonstration of why this will not work
+     *
+     * Priority Queue gives back the least number and it can be subtracted from the sum
+     * But the problem is that a combination of numbers that need to be subtracted from
+     * the sum is not handled
+     *
+     * Ex: {2, 6, 2, 2, 7}
+     * Sum is 19
+     * 19-2=17 X (done 3 times for the 3 2s)
+     * 19-6=13 X
+     * 19-7=12 V but this is not the right answer since 19-2-2=15 is correct
+     *
+     * @param nums
+     * @return
+     */
     private static int maxSumDivThreePq(int[] nums) {
         PriorityQueue<Integer> pq = new PriorityQueue<>();
 

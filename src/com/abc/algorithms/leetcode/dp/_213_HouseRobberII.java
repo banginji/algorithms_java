@@ -32,7 +32,7 @@ public class _213_HouseRobberII {
         if (idx > endIdx) return 0;
         if (dp[idx] != null) return dp[idx];
 
-        return Math.max(
+        return dp[idx] = Math.max(
                 houseRobberDpTd(dp, nums, idx + 1, endIdx),
                 nums[idx] + houseRobberDpTd(dp, nums, idx + 2, endIdx)
         );
@@ -116,10 +116,11 @@ public class _213_HouseRobberII {
         itr = 0;
         System.out.println("TimeIt houseRobberDpTd");
         /**
-         * Time taken: 38.4801395
-         * Time taken: 38.535609768
          *
-         * Time taken ~38 s
+         * Time taken: 6.8535E-5
+         * Time taken: 3.9593E-5
+         *
+         * Time taken ~10e5 s
          */
         while (itr++ < 2)
             TimeIt.timeTaken(() -> houseRobberDpTd(new int[]{114, 117, 207, 117, 235, 82, 90, 67, 143, 146, 53, 108, 200, 91, 80, 223, 58, 170, 110, 236, 81, 90, 222, 160, 165, 195, 187, 199, 114, 235, 197, 187, 69, 129, 64, 214, 228, 78, 188, 67, 205, 94, 205, 169, 241, 202, 144, 240}));
