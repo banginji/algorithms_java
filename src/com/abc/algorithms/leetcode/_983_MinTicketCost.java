@@ -3,6 +3,7 @@ package com.abc.algorithms.leetcode;
 import java.util.stream.IntStream;
 
 public class _983_MinTicketCost {
+    // https://leetcode.com/problems/minimum-cost-for-tickets/discuss/886443/Evolution-%3A-Recursion-greater-Memo-on-Recursion-greater-DP-greater-6-line-DP.-Detailed-explanation
     private static int minTicketCost(int[] days, int[] costs) {
         //min(dp(i-1)+cost[0]+...)
         int relevantDayLimit = days[days.length - 1];
