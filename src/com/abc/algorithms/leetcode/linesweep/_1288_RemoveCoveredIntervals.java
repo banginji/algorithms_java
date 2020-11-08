@@ -34,10 +34,48 @@ public class _1288_RemoveCoveredIntervals {
                 removeCoveredIntervals(
                         new int[][]{
                                 new int[]{1, 4},
+                                new int[]{3, 6},
+                                new int[]{2, 8},
+                        }
+                ) == 2
+        );
+
+        System.out.println(
+                removeCoveredIntervals(
+                        new int[][]{
+                                new int[]{1, 4},
+                                new int[]{2, 3}
+                        }
+                ) == 1
+        );
+
+        System.out.println(
+                removeCoveredIntervals(
+                        new int[][]{
+                                new int[]{0, 10},
+                                new int[]{5, 12}
+                        }
+                ) == 2
+        );
+
+        System.out.println(
+                removeCoveredIntervals(
+                        new int[][]{
+                                new int[]{1, 2},
+                                new int[]{1, 4},
+                                new int[]{3, 4},
+                        }
+                ) == 1
+        );
+
+        System.out.println(
+                removeCoveredIntervals(
+                        new int[][]{
+                                new int[]{1, 4},
                                 new int[]{1, 2},
                                 new int[]{3, 4},
                         }
-                )
+                ) == 1
         );
     }
 }
