@@ -7,9 +7,6 @@ import java.util.List;
 
 public class _1272_RemoveInterval {
     private static List<List<Integer>> removeInterval(int[][] intervals, int[] toBeRemoved) {
-        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
-        Arrays.sort(toBeRemoved);
-
         List<List<Integer>> res = new ArrayList<>();
 
         for (int[] interval : intervals) {
