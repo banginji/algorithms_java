@@ -1,6 +1,6 @@
-package com.abc.algorithms.leetcode;
+package com.abc.algorithms.leetcode.dp;
 
-import java.util.Arrays;
+import com.abc.algorithms.leetcode.TimeIt;
 
 public class _1143_LongestSequence {
     private static int lcsSlow(String str1, String str2) {
