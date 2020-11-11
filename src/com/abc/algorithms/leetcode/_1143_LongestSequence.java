@@ -24,8 +24,7 @@ public class _1143_LongestSequence {
     }
 
     private static int lcsFast(String str1, String str2) {
-        int[][] dp = new int[str1.length()][str2.length()];
-        for (int[] d : dp) Arrays.fill(d, Integer.MIN_VALUE);
+        int[][] dp = new int[str1.length() + 1][str2.length() + 1];
 
         return lcsFast(str1.toCharArray(), 0, str2.toCharArray(), 0, dp);
     }
@@ -33,7 +32,7 @@ public class _1143_LongestSequence {
     private static int lcsFast(char[] charArrOne, int idxOne, char[] charArrTwo, int idxTwo, int[][] dp) {
         if (idxOne >= charArrOne.length || idxTwo >= charArrTwo.length) return 0;
 
-        if (dp[idxOne][idxTwo] != Integer.MIN_VALUE) return dp[idxOne][idxTwo];
+        if (dp[idxOne][idxTwo] != 0) return dp[idxOne][idxTwo];
 
         if (charArrOne[idxOne] == charArrTwo[idxTwo])
             return dp[idxOne][idxTwo] = 1 + lcsFast(charArrOne, idxOne + 1, charArrTwo, idxTwo + 1, dp);
