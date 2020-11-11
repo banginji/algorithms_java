@@ -1,5 +1,7 @@
 package com.abc.algorithms.leetcode;
 
+import java.util.Arrays;
+
 public class _1143_LongestSequence {
     private static int lcsSlow(String str1, String str2) {
         String longer = str1.length() >= str2.length() ? str1 : str2;
@@ -21,31 +23,25 @@ public class _1143_LongestSequence {
         );
     }
 
-    private static String lcsFast(String str1, String str2) {
-        String longer = str1.length() >= str2.length() ? str1 : str2;
-        String shorter = str1.length() < str2.length() ? str1 : str2;
+    private static int lcsFast(String str1, String str2) {
+        int[][] dp = new int[str1.length()][str2.length()];
+        for (int[] d : dp) Arrays.fill(d, Integer.MIN_VALUE);
 
-        String[][] memo = new String[longer.length()][shorter.length()];
-
-        return lcsFast(longer, 0, shorter, 0, memo);
+        return lcsFast(str1.toCharArray(), 0, str2.toCharArray(), 0, dp);
     }
 
-    private static String lcsFast(String longer, int longerIdx, String shorter, int shorterIdx, String[][] memo) {
-        if (longerIdx == longer.length() || shorterIdx == shorter.length())
-            return "";
+    private static int lcsFast(char[] charArrOne, int idxOne, char[] charArrTwo, int idxTwo, int[][] dp) {
+        if (idxOne >= charArrOne.length || idxTwo >= charArrTwo.length) return 0;
 
-        if (memo[longerIdx][shorterIdx] != null)
-            return memo[longerIdx][shorterIdx];
+        if (dp[idxOne][idxTwo] != Integer.MIN_VALUE) return dp[idxOne][idxTwo];
 
-        if (longer.charAt(longerIdx) == shorter.charAt(shorterIdx)) {
-            memo[longerIdx][shorterIdx] = longer.charAt(longerIdx) + lcsFast(longer, longerIdx + 1, shorter, shorterIdx + 1, memo);
-            return memo[longerIdx][shorterIdx];
-        }
+        if (charArrOne[idxOne] == charArrTwo[idxTwo])
+            return dp[idxOne][idxTwo] = 1 + lcsFast(charArrOne, idxOne + 1, charArrTwo, idxTwo + 1, dp);
 
-        String resultA = lcsFast(longer, longerIdx + 1, shorter, shorterIdx, memo);
-        String resultB = lcsFast(longer, longerIdx, shorter, shorterIdx + 1, memo);
-
-        return resultA.length() > resultB.length() ? resultA : resultB;
+        return dp[idxOne][idxTwo] = Math.max(
+                lcsFast(charArrOne, idxOne + 1, charArrTwo, idxTwo, dp),
+                lcsFast(charArrOne, idxOne, charArrTwo, idxTwo + 1, dp)
+        );
     }
 
     /**
@@ -69,7 +65,10 @@ public class _1143_LongestSequence {
                 if (char1Array[char1Idx - 1] == char2Array[char2Idx - 1])
                     result[char1Idx][char2Idx] = result[char1Idx - 1][char2Idx - 1] + 1;
                 else
-                    result[char1Idx][char2Idx] = result[char1Idx][char2Idx - 1];
+                    result[char1Idx][char2Idx] = Math.max(
+                            result[char1Idx][char2Idx - 1],
+                            result[char1Idx - 1][char2Idx]
+                    );
             }
         }
 
@@ -77,6 +76,58 @@ public class _1143_LongestSequence {
     }
 
     public static void main(String[] args) {
-        System.out.println(lcsFastMyWay("abbbba", "babab"));
+        System.out.println(
+                lcsFast("abbbba", "babab") == 3
+        );
+
+        System.out.println(
+                lcsFast("mhunuzqrkzsnidwbun", "szulspmhwpazoxijwbq") == 6
+        );
+
+        System.out.println(
+                lcsFastMyWay("abbbba", "babab") == 3
+        );
+
+        System.out.println(
+                lcsFastMyWay("mhunuzqrkzsnidwbun", "szulspmhwpazoxijwbq") == 6
+        );
+
+        /**
+         * Time taken: 1.78706E-4
+         * Time taken: 3.251E-5
+         * Time taken: 2.8641E-5
+         * Time taken: 2.2743E-5
+         * Time taken: 2.0842E-5
+         * Time taken: 2.5833E-5
+         * Time taken: 2.0507E-5
+         * Time taken: 2.7137E-5
+         * Time taken: 2.4215E-5
+         *
+         * ~ 25e-6 sec
+         */
+        int idxOne = 0;
+        while (idxOne++ < 9)
+            TimeIt.timeTaken(() -> lcsFast("mhunuzqrkzsnidwbun", "szulspmhwpazoxijwbq"));
+
+        System.out.println("-".repeat(25));
+
+        /**
+         * Time taken: 4.2632E-5
+         * Time taken: 4.5178E-5
+         * Time taken: 4.4723E-5
+         * Time taken: 3.2617E-5
+         * Time taken: 4.6875E-5
+         * Time taken: 3.3468E-5
+         * Time taken: 3.2128E-5
+         * Time taken: 3.885E-5
+         * Time taken: 3.213E-5
+         *
+         * ~ 40e-6 sec
+         */
+        int idxTwo = 0;
+        while (idxTwo++ < 9)
+            TimeIt.timeTaken(() -> lcsFastMyWay("mhunuzqrkzsnidwbun", "szulspmhwpazoxijwbq"));
+
+        System.out.println("-".repeat(25));
     }
 }
