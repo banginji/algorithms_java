@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class _1371_EvenVowels {
+    // https://leetcode.com/problems/find-the-longest-substring-containing-vowels-in-even-counts/discuss/534210/Dew-It-or-Simple-illustration-for-THE-trick
     private static int evenVowels(String s) {
         char[] vowels = {'a', 'e', 'i', 'o', 'u'};
         int[] pow = {1, 2, 4, 8, 16};
