@@ -10,10 +10,7 @@ public class _787_CheapestFlights {
             neighborMap.put(city, new ArrayList<>());
 
         for (int[] flight : flights)
-            neighborMap.computeIfPresent(flight[0], (key, value) -> {
-                value.add(new int[]{flight[1], flight[2]});
-                return value;
-            });
+            neighborMap.computeIfAbsent(flight[0], x -> new ArrayList<>()).add(new int[]{flight[1], flight[2]});
 
         PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(cityAndCost -> cityAndCost[1]));
         pq.offer(new int[]{src, 0, -1});
@@ -47,6 +44,20 @@ public class _787_CheapestFlights {
                 cheapestFlights(
                         4,
                         new int[][]{
+                                new int[]{0, 1, 100},
+                                new int[]{1, 2, 100},
+                                new int[]{0, 2, 500}
+                        },
+                        0,
+                        2,
+                        1
+                ) == 200
+        );
+
+        System.out.println(
+                cheapestFlights(
+                        4,
+                        new int[][]{
                                 new int[]{0, 1, 1},
                                 new int[]{0, 2, 5},
                                 new int[]{1, 2, 1},
@@ -55,7 +66,7 @@ public class _787_CheapestFlights {
                         0,
                         3,
                         1
-                )
+                ) == 6
         );
     }
 }
