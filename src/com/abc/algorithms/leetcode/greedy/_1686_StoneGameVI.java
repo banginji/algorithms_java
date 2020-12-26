@@ -1,4 +1,4 @@
-package com.abc.algorithms.leetcode.dp;
+package com.abc.algorithms.leetcode.greedy;
 
 import java.util.Arrays;
 
