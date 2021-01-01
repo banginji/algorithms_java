@@ -97,6 +97,13 @@ public class _322_CoinChange {
     }
 
     public static void main(String[] args) {
+        System.out.println(coinChanges(new int[]{1, 2, 5}, 11) == 3);
+        System.out.println(coinChanges(new int[]{2}, 3) == -1);
+        System.out.println(coinChanges(new int[]{1}, 0) == 0);
+        System.out.println(coinChanges(new int[]{1}, 1) == 1);
+        System.out.println(coinChanges(new int[]{1}, 2) == 2);
+        System.out.println(coinChanges(new int[]{186, 419, 83, 408}, 6249) == 20);
+
         System.out.println(coinChange(new int[]{1, 2, 5}, 11) == 3);
         System.out.println(coinChange(new int[]{2}, 3) == -1);
         System.out.println(coinChange(new int[]{1}, 0) == 0);
