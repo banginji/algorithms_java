@@ -1,5 +1,8 @@
 package com.abc.algorithms.leetcode.tree;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CreateBinaryTree {
     public static class TreeNode {
         public Integer val;
@@ -13,10 +16,13 @@ public class CreateBinaryTree {
         }
     }
 
+    private Map<Integer, TreeNode> nodeMap = new HashMap<>();
+
     public TreeNode createTree(Integer[] nodes) {
         TreeNode[] bTreeArray = new TreeNode[nodes.length];
 
         TreeNode root = new TreeNode(nodes[0]);
+        nodeMap.put(nodes[0], root);
         bTreeArray[0] = root;
 
         int leftChildIdx = 1;
@@ -27,10 +33,12 @@ public class CreateBinaryTree {
             int rightChildIdx = leftChildIdx + 1;
 
             parent.left = new TreeNode(nodes[leftChildIdx]);
+            nodeMap.put(nodes[leftChildIdx], parent.left);
             bTreeArray[leftChildIdx] = parent.left;
 
             if (rightChildIdx < nodes.length) {
                 parent.right = new TreeNode(nodes[rightChildIdx]);
+                nodeMap.put(nodes[rightChildIdx], parent.right);
                 bTreeArray[rightChildIdx] = parent.right;
             }
 
@@ -45,6 +53,10 @@ public class CreateBinaryTree {
             return -1;
 
         return (position - 1) / 2;
+    }
+
+    public Map<Integer, TreeNode> getNodeMap() {
+        return nodeMap;
     }
 
     public static boolean isLeafNode(TreeNode node) {
