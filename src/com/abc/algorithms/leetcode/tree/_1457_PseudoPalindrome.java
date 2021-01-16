@@ -55,10 +55,37 @@ public class _1457_PseudoPalindrome {
         nodesInPath.remove(node);
     }
 
+    private static int pp(TreeNode root) {
+        boolean[] oddNums = new boolean[10];
+        return dfs(root, oddNums, 0);
+    }
+
+    private static int dfs(TreeNode node, boolean[] oddNums, int count) {
+        if (node == null || node.val == null) return count;
+        oddNums[node.val] = !oddNums[node.val];
+        if (node.left == null && node.right == null) if (isPalindrome(oddNums)) count++;
+        count = dfs(node.left, oddNums, count);
+        count = dfs(node.right, oddNums, count);
+        oddNums[node.val] = !oddNums[node.val];
+        return count;
+    }
+
+    private static boolean isPalindrome(boolean[] oddNums) {
+        int allowedInfractions = 1;
+        for (boolean isOdd : oddNums) {
+            if (isOdd && allowedInfractions > 0) {
+                allowedInfractions--;
+                continue;
+            }
+            if (!isOdd) continue;
+            return false;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         CreateBinaryTree createBinaryTree = new CreateBinaryTree();
         TreeNode root = createBinaryTree.createTree(new Integer[]{2, 3, 1, 3, 1, null, 1});
-        pseudoPalindromePaths(root);
-        System.out.println(count);
+        System.out.println(pp(root));
     }
 }
