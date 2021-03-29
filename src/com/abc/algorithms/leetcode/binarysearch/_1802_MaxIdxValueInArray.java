@@ -40,11 +40,11 @@ public class _1802_MaxIdxValueInArray {
 
     public static void main(String[] args) {
         System.out.println(
-                maxIdxValue(4, 2, 6)
+                maxIdxValue(4, 2, 6) == 2
         );
 
         System.out.println(
-                maxIdxValue(6, 1, 10)
+                maxIdxValue(6, 1, 10) == 3
         );
     }
 }
