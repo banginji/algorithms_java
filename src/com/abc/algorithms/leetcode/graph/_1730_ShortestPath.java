@@ -37,8 +37,6 @@ public class _1730_ShortestPath {
         if (colIdx - 1 >= 0 && !visited[rowIdx][colIdx - 1])
             resFour = traverse(rowIdx, colIdx - 1, grid, visited, count + 1);
 
-        visited[rowIdx][colIdx] = false;
-
         return Math.min(Math.min(resOne, resTwo), Math.min(resThree, resFour));
     }
 
