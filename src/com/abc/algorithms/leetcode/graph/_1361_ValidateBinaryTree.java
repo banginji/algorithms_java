@@ -24,8 +24,6 @@ public class _1361_ValidateBinaryTree {
         visited[startNode] = true;
         boolean result = dfs(startNode, leftChild, rightChild, visited);
         return result & Arrays.stream(visited).allMatch(Boolean::booleanValue);
-//        for (boolean v : visited) if (!v) return false;
-//        return result;
     }
 
     private static boolean dfs(int node, int[] leftChild, int[] rightChild, Boolean[] visited) {
@@ -56,7 +54,7 @@ public class _1361_ValidateBinaryTree {
         );
 
         System.out.println(
-                validateBinaryTreeNodes(
+                !validateBinaryTreeNodes(
                         4,
                         new int[]{1, -1, 3, -1},
                         new int[]{2, 3, -1, -1}
@@ -64,7 +62,7 @@ public class _1361_ValidateBinaryTree {
         );
 
         System.out.println(
-                validateBinaryTreeNodes(
+                !validateBinaryTreeNodes(
                         2,
                         new int[]{1, 0},
                         new int[]{-1, -1}
@@ -72,7 +70,7 @@ public class _1361_ValidateBinaryTree {
         );
 
         System.out.println(
-                validateBinaryTreeNodes(
+                !validateBinaryTreeNodes(
                         6,
                         new int[]{1, -1, -1, 4, -1, -1},
                         new int[]{2, -1, -1, 5, -1, -1}
