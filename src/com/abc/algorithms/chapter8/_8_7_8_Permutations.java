@@ -5,22 +5,10 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class _8_7_8_Permutations {
-    static class Permutation<T> {
-        List<T> elems;
-
-        Permutation(List<T> elems) {
-            this.elems = elems;
-        }
-
+    record Permutation<T>(List<T> elems) {
         public Set<List<T>> getPermutations() {
             Set<List<T>> permutations = new HashSet<>(Collections.singletonList(new ArrayList<>()));
-
-            for (T elem : this.elems) {
-                Set<List<T>> newBases = new HashSet<>(permutations);
-                permutations.addAll(getPermBases(newBases, elem));
-                permutations.removeAll(newBases);
-            }
-
+            for (T elem : this.elems) permutations = getPermBases(permutations, elem);
             return permutations;
         }
 
@@ -36,7 +24,8 @@ public class _8_7_8_Permutations {
                                     List<T> clonedBase = new ArrayList<>(baseElem);
                                     clonedBase.add(idx, elem);
                                     return clonedBase;
-                                }).collect(Collectors.toList())
+                                })
+                                .collect(Collectors.toList())
                 );
 
             return bases;
@@ -44,7 +33,7 @@ public class _8_7_8_Permutations {
     }
 
     public static void main(String[] args) {
-        Permutation<Character> permutation = new Permutation<>(Arrays.asList('a', 'a', 'b', 'b', 'c', 'c', 'c'));
+        Permutation<Integer> permutation = new Permutation<>(List.of(1, 2, 3));
         System.out.println(permutation.getPermutations());
     }
 }
