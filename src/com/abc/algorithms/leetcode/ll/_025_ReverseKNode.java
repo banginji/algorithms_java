@@ -1,0 +1,64 @@
+package com.abc.algorithms.leetcode.ll;
+
+import java.util.ArrayDeque;
+import java.util.stream.IntStream;
+
+public class _025_ReverseKNode {
+    private static class ListNode {
+        private final int val;
+        private ListNode next;
+        public ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
+        public int getVal() {
+            return val;
+        }
+    }
+    private static ListNode reverseKNodes(ListNode head, int k) {
+        ListNode itrNode = head;
+        int size = 0;
+        while (itrNode != null) {
+            size++;
+            itrNode = itrNode.next;
+        }
+        return r(head, k, size);
+    }
+    private static ListNode r(ListNode node, int k, int remSize) {
+        if (node == null) return null;
+        if (remSize < k) return node;
+        ArrayDeque<ListNode> deque = new ArrayDeque<>();
+        int count = 0;
+        while (++count <= k && node != null) {
+            remSize--;
+            deque.offerFirst(node);
+            node = node.next;
+        }
+        ListNode resNode = deque.pollFirst();
+        resNode.next = null;
+        ListNode res = resNode;
+        while (deque.size() > 0) {
+            resNode.next = deque.pollFirst();
+            resNode = resNode.next;
+            resNode.next = null;
+        }
+        resNode.next = r(node, k, remSize);
+        return res;
+    }
+    private static ListNode createList(int[] nums) {
+        return createList(0, nums);
+    }
+    private static ListNode createList(int idx, int[] nums) {
+        if (idx >= nums.length) return null;
+        return new ListNode(nums[idx], createList(idx + 1, nums));
+    }
+    public static void main(String[] args) {
+        ListNode node = createList(IntStream.rangeClosed(1, 7).boxed().mapToInt(Integer::intValue).toArray());
+        ListNode res = reverseKNodes(node, 3);
+        while (res != null) {
+            System.out.print(res.getVal());
+            if (res.next != null)  System.out.print(" -> ");
+            res = res.next;
+        }
+    }
+}
