@@ -3,24 +3,15 @@ package com.abc.algorithms.leetcode.ll;
 import java.util.ArrayDeque;
 import java.util.stream.IntStream;
 
+import static com.abc.algorithms.leetcode.ll.LinkedListHelper.*;
+
 public class _025_ReverseKNode {
-    private static class ListNode {
-        private final int val;
-        private ListNode next;
-        public ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-        public int getVal() {
-            return val;
-        }
-    }
     private static ListNode reverseKNodes(ListNode head, int k) {
         ListNode itrNode = head;
         int size = 0;
         while (itrNode != null) {
             size++;
-            itrNode = itrNode.next;
+            itrNode = itrNode.getNext();
         }
         return r(head, k, size);
     }
@@ -32,7 +23,7 @@ public class _025_ReverseKNode {
         while (++count <= k && node != null) {
             remSize--;
             deque.offerFirst(node);
-            node = node.next;
+            node = node.getNext();
         }
         ListNode resNode = deque.pollFirst();
         resNode.next = null;
@@ -44,13 +35,6 @@ public class _025_ReverseKNode {
         }
         resNode.next = r(node, k, remSize);
         return res;
-    }
-    private static ListNode createList(int[] nums) {
-        return createList(0, nums);
-    }
-    private static ListNode createList(int idx, int[] nums) {
-        if (idx >= nums.length) return null;
-        return new ListNode(nums[idx], createList(idx + 1, nums));
     }
     public static void main(String[] args) {
         ListNode node = createList(IntStream.rangeClosed(1, 7).boxed().mapToInt(Integer::intValue).toArray());
