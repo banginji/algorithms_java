@@ -24,10 +24,6 @@ public class _061_RotateList {
     public static void main(String[] args) {
         ListNode node = createList(IntStream.rangeClosed(1, 7).boxed().mapToInt(Integer::intValue).toArray());
         ListNode res = rotateList(node, 3);
-        while (res != null) {
-            System.out.print(res.getVal());
-            if (res.next != null) System.out.print(" -> ");
-            res = res.next;
-        }
+        printList(res);
     }
 }

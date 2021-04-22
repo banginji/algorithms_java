@@ -27,4 +27,12 @@ public class LinkedListHelper {
         if (idx >= nums.length) return null;
         return new ListNode(nums[idx], createList(idx + 1, nums));
     }
+
+    public static void printList(ListNode node) {
+        while (node != null) {
+            System.out.print(node.getVal());
+            if (node.next != null)  System.out.print(" -> ");
+            node = node.next;
+        }
+    }
 }
