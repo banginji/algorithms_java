@@ -37,7 +37,7 @@ public class _025_ReverseKNode {
         return res;
     }
     public static void main(String[] args) {
-        ListNode node = createList(IntStream.rangeClosed(1, 7).boxed().mapToInt(Integer::intValue).toArray());
+        ListNode node = createList(IntStream.rangeClosed(1, 7).toArray());
         ListNode res = reverseKNodes(node, 3);
         printList(res);
     }

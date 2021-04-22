@@ -22,7 +22,7 @@ public class _061_RotateList {
     }
 
     public static void main(String[] args) {
-        ListNode node = createList(IntStream.rangeClosed(1, 7).boxed().mapToInt(Integer::intValue).toArray());
+        ListNode node = createList(IntStream.rangeClosed(1, 7).toArray());
         ListNode res = rotateList(node, 3);
         printList(res);
     }
