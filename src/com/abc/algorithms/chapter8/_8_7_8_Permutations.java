@@ -1,7 +1,6 @@
 package com.abc.algorithms.chapter8;
 
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class _8_7_8_Permutations {
@@ -25,7 +24,7 @@ public class _8_7_8_Permutations {
                                     clonedBase.add(idx, elem);
                                     return clonedBase;
                                 })
-                                .collect(Collectors.toList())
+                                .toList()
                 );
 
             return bases;

@@ -2,10 +2,24 @@ package com.abc.algorithms.leetcode.dp;
 
 import com.abc.algorithms.leetcode.TimeIt;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class _1143_LongestSequence {
     private static int lcsSlow(String str1, String str2) {
         String longer = str1.length() >= str2.length() ? str1 : str2;
         String shorter = str1.length() < str2.length() ? str1 : str2;
+
+        Map<Integer, Integer> map = new HashMap<>();
+        map.computeIfPresent(1, (k, v) -> v+1);
+        map.values().stream().filter(num -> num > 0).allMatch(num -> num >= 5);
+
+        /**
+         * "eqouehguoqhgqklqnwfkjqnwofjn"
+         * 2
+         * "ueginroekfddkmkmbwr"
+         * 2
+         */
 
         return lcsSlow(longer, 0, shorter, 0, 0);
     }
