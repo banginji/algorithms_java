@@ -2,47 +2,36 @@ package com.abc.algorithms.leetcode.array;
 
 public class _3546_EqualSumGrid {
     public boolean canPartitionGrid(int[][] grid) {
-        int[][] rowTraverser = new int[grid.length][grid[0].length];
-        int[][] colTraverser = new int[grid.length][grid[0].length];
-
-        for (int jIdx = 0; jIdx < grid[0].length; jIdx++) {
-            for (int iIdx = 0; iIdx < grid.length; iIdx++) {
-                if (iIdx == 0) {
-                    rowTraverser[iIdx][jIdx] = grid[iIdx][jIdx];
-                    continue;
-                }
-                rowTraverser[iIdx][jIdx] = rowTraverser[iIdx-1][jIdx] + grid[iIdx][jIdx];
+        long totalSum = 0;
+        for (int rowIdx = 0; rowIdx < grid.length; rowIdx++) {
+            for (int colIdx = 0; colIdx < grid[rowIdx].length; colIdx++) {
+                totalSum += grid[rowIdx][colIdx];
             }
         }
-
-        for (int iIdx = 0; iIdx < grid.length; iIdx++) {
-            for (int jIdx = 0; jIdx < grid[0].length; jIdx++) {
-                if (jIdx == 0) {
-                    colTraverser[iIdx][jIdx] = grid[iIdx][jIdx];
-                    continue;
-                }
-                colTraverser[iIdx][jIdx] = colTraverser[iIdx][jIdx-1] + grid[iIdx][jIdx];
-            }
+        if (totalSum % 2 != 0) {
+            return false;
         }
 
-        boolean result;
+        long target = totalSum / 2;
 
-        // Check for vertical cuts - comparing left and right parts
-        for (int jIdx = 0; jIdx < grid[0].length - 1; jIdx++) {
-            result = true;
-            int leftSum = colTraverser[grid.length - 1][jIdx];
-            int rightSum = colTraverser[grid.length - 1][grid[0].length - 1] - leftSum;
-            if (leftSum == rightSum) {
+        // horizontal cut
+        long sum = 0;
+        for (int rowIdx = 0; rowIdx < grid.length; rowIdx++) {
+            for (int colIdx = 0; colIdx < grid[0].length; colIdx++) {
+                sum += grid[rowIdx][colIdx];
+            }
+            if (sum == target) {
                 return true;
             }
         }
 
-        // Check for horizontal cuts - comparing top and bottom parts
-        for (int iIdx = 0; iIdx < grid.length - 1; iIdx++) {
-            result = true;
-            int topSum = rowTraverser[iIdx][grid[0].length - 1];
-            int bottomSum = rowTraverser[grid.length - 1][grid[0].length - 1] - topSum;
-            if (topSum == bottomSum) {
+        // vertical cut
+        sum = 0;
+        for (int colIdx = 0; colIdx < grid[0].length; colIdx++) {
+            for (int rowIdx = 0; rowIdx < grid.length; rowIdx++) {
+                sum += grid[rowIdx][colIdx];
+            }
+            if (sum == target) {
                 return true;
             }
         }
@@ -59,32 +48,59 @@ public class _3546_EqualSumGrid {
                         }
                 )
         );
-//
-//        System.out.println(
-//                new _3546_EqualSumGrid().canPartitionGrid(
-//                        new int[][]{
-//                                {1, 4, 5},
-//                                {6, 3, 2},
-//                                {2, 3, 7},
-//                        }
-//                )
-//        );
 
-//        System.out.println(
-//                new _3546_EqualSumGrid().canPartitionGrid(
-//                        new int[][]{
-//                                {28443},
-//                                {33959}
-//                        }
-//                )
-//        );
+        System.out.println(
+                !new _3546_EqualSumGrid().canPartitionGrid(
+                        new int[][]{
+                                {1, 4, 5},
+                                {6, 3, 2},
+                                {2, 3, 7},
+                        }
+                )
+        );
 
-//        System.out.println(
-//                new _3546_EqualSumGrid().canPartitionGrid(
-//                        new int[][]{
-//                                {28443, 33959}
-//                        }
-//                )
-//        );
+        System.out.println(
+                !new _3546_EqualSumGrid().canPartitionGrid(
+                        new int[][]{
+                                {28443},
+                                {33959}
+                        }
+                )
+        );
+
+        System.out.println(
+                !new _3546_EqualSumGrid().canPartitionGrid(
+                        new int[][]{
+                                {28443, 33959}
+                        }
+                )
+        );
+
+        System.out.println(
+                new _3546_EqualSumGrid().canPartitionGrid(
+                        new int[][]{
+                                {54756, 54756}
+                        }
+                )
+        );
+
+        System.out.println(
+                new _3546_EqualSumGrid().canPartitionGrid(
+                        new int[][]{
+                                {42047},
+                                {57775},
+                                {99822}
+                        }
+                )
+        );
+
+        System.out.println(
+                !new _3546_EqualSumGrid().canPartitionGrid(
+                        new int[][]{
+                                {100000, 10247},
+                                {1, 1},
+                        }
+                )
+        );
     }
 }
