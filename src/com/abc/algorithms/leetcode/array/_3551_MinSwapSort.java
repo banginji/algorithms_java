@@ -4,6 +4,7 @@ import java.util.*;
 
 public class _3551_MinSwapSort {
     public int minSwaps(int[] nums) {
+        // arrive at finding the two arrays that needs to be equated and then perform cycle detection
         int[][] sorted = new int[nums.length][1];
         for (int idx = 0; idx < nums.length; idx++) sorted[idx] = new int[]{nums[idx], idx};
         Arrays.sort(sorted, (a, b) -> {
